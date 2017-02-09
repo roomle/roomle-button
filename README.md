@@ -67,16 +67,21 @@ The `es6-promise.min.js ` polyfill is only included for old legacy browsers whic
 For security reasons a SRI hash is included so you can be sure that the correct script is loaded (this is especially important when lazy loading the scripts). For more details on SRI see the following [MDN page](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
 
 #### Roomle Button configuration object
-To configure the Roomle Button you have to specify a JavaScript object available on the same scope as the Roomle Button. Most of the time this will be the `window` scope (since this is the global scope in the browser).  The name of the object is `RoomleButtonSettings`. For the detailed settings see section: XXX. A possible implementation could be:
+To configure the Roomle Button you have to specify a JavaScript object available on the same scope as the Roomle Button. Most of the time this will be the `window` scope (since this is the global scope in the browser).  The name of the object is `RoomleButtonSettings`. For the detailed settings see section: [Settings](#settings). A possible implementation could be:
 
 ```javascript
 window.RoomleButtonSettings = {
     // ...
     // All settings
     // ...
+    callback: {
+    	booted: function() {
+    		// inform consuming app that roomle button library is ready to rock
+    	}
+    }
 }
 ```
-
+It makes sense to implement the `booted` callback so that you can react on when the Roomle Button Library finished loaded and setup.
 
 ### Enhance mode
 As explaind in the introduction section above the `enhance mode` adds the Roomle Button to an existing page. A working example can be seen [on our website](https://www.roomle.com/en/furniture-catalog/vizmotor_0:ikea). After you included the Roomle Button JavaScript you need to adjust the HTML markup of your page slightly. Every product which should be enhanced with the Roomle Button has to contain the following two markup attributes:
@@ -173,7 +178,62 @@ if you want to use the Roomle Button pop ups to stay in sync with the CI and UX 
 * `parent`: the HTML element to which the pop up should be attachted. This is an optional parameter
 
 ### Settings
-Comming soon
+The settings are a regular JavaScript object which has to be in the same scope as where the Roomle Button Library is included. In the browser this will be most of the time the `window` scope. The settings object has to be named `RoomleButtonSettings`, there are the following options available right now:
+
+| Keyname | Type | Meaning |
+|---------|------|---------|
+| mode | string (possible values lib or button) | in which mode should the library instantiated |
+| container | string (dom query selector) | this is the container which contains possible roomle element |
+| selector | string (dom query selector) | this is the container of a possible roomle element, into this selector the trigger is positioned |
+| showOnlyTrigger | boolean | show trigger yes or no |
+| createNoButtons | boolean | render buttons into pop up yes or no |
+| typeSelector | string | this string is used to get the Roomle Type of an element, default: data-rml-type |
+| idSelector | string | this string is used to get the Roomle Id of an element, default: data-rml-id |
+| planId | string (possible every Roomle plan id) | which plan should be used for add to plan etc |
+| createPopUp | boolean | create pop up yes or no |
+| showBackButton | boolean | if a user tries to use a feature which is not available on her/his device a tutorial page is shown, if you want to prevent the user from going back and listing all features turn this flag to false |
+| popUpSelector | string (dom query selector) | dom selector where the popup should life |
+| translations | object | a hash of translations every translation has the following keys: heading, hint.ios, hint.android, hint.desktop |
+| translations.ar | object | a hash of translations for the `augmented reality` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.add | object | a hash of translations for the `add to plan` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.configure | object | a hash of translations for the `configure` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.mark | object | a hash of translations for the `mark` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.trigger | object | a hash of translations for the `trigger` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.visualize | object | a hash of translations for the `visualize` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.vr | object | a hash of translations for the `virtual reality` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
+| translations.error | object | a hash of translations for possible errors. The hash has a deeplinkcreate |
+| web.baseUrl | string | the baseUrl for the web links |
+| viewr.baseUrl | string | the baseUrl for the viewr links |
+| ios.baseUrl | string | the baseUrl for the iOS links |
+| dataSelector.type | string | this string is used to get the Roomle Type of an element, default: data-rml-type |
+| dataSelector.id | string | this string is used to get the Roomle Id of an element, default: data-rml-id |
+| dataSelector.action | string | this string is used to get the Roomle action of an element, default: data-rml-action |
+| html.containerClass | string (css class) | the class which should be used to create the container html |
+| html.containerType | string (html tagname) | the HTML tag which should be used to create the container html |
+| html.buttonsContainer | string (css class) | the class which should be used to create the buttons container html |
+| html.buttonsElement  | string (html tagname) | the HTML tag which should be used to create the button html |
+| css.buttons.position | string (css command) | css command to position the buttons |
+| css.buttons.top | string (css command) | css command to define top space |
+| css.buttons.right | string (css command) |  css command to define right space |
+| css.buttons['line-height'] | string (css command) |  css command to define line-height |
+| css.item.position | string (css command) |  css command to position the items |
+| callback | object |  these callbacks are called so that the developer who is using the Roomle Button Library can intercept events which happen while the user is using the Roomle Button stuff |
+| callback.item | function | reserved for future usage |
+| callback.configuration |  function | reserved for future usage |
+| callback.plan |  function | reserved for future usage |
+| callback.button | object | this object holds all callbacks for buttons. Right now this object contains of trigger, add, visualize, configure, ar, mark, start_now, vr |
+| callback.button.trigger | function | this callbacke is invoked when the user clicks on the trigger button |
+| callback.button.add | function | this callbacke is invoked when the user clicks on the add to plan button |
+| callback.button.visualize | function | this callbacke is invoked when the user clicks on the visualize button |
+| callback.button.configure | function | this callbacke is invoked when the user clicks on the configure button |
+| callback.button.ar | function | this callbacke is invoked when the user clicks on the augmented reality button |
+| callback.button.mark | function | this callbacke is invoked when the user clicks on the mark button |
+| callback.button.start_now | function | this callbacke is invoked when the user clicks on the start planning button |
+| callback.button.vr | function | this callbacke is invoked when the user clicks on the virtual reality button |
+| callback.popupOpen | function | this callback is invoked when the Roomle Button Pop Up is opened |
+| callback.popupClosed | function | this callback is invoked when the Roomle Button Pop Up is closed |
+| callback.booted | function | this callback is invoked when the Roomle Button finished loading and setup |
+| callback.clickedHint | function |this callback is invoked when the user clicks on a feature which is not available on her/his current device right now |
 
 ### Styleing
 As of now there is no defined interface to style the Roomle Button HTML elements. The pop up etc are injected into your HTML so there is the way to overwrite the Roomle styles via CSS but since this is not supported Roomle can not guarantee that these styleings won't break with the next release. All Roomle CSS styles are prefixed with ```rml-``` to prevent possible naming collissions.
