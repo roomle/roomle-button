@@ -238,3 +238,5 @@ The settings are a regular JavaScript object which has to be in the same scope a
 ### Styleing
 As of now there is no defined interface to style the Roomle Button HTML elements. The pop up etc are injected into your HTML so there is the way to overwrite the Roomle styles via CSS but since this is not supported Roomle can not guarantee that these styleings won't break with the next release. All Roomle CSS styles are prefixed with ```rml-``` to prevent possible naming collissions.
 
+### Notice
+[Try out our full featured room planner. It's for free :-)](https://www.roomle.com/en/floorplanner)
