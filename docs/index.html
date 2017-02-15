@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo to Roomle Button</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="/css/roomle-button.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<script>
+
+    window.RoomleButtonSettings = {
+        mode: 'button',
+        container: '.container',
+        selector: '.roomle-item',
+        showOnlyTrigger: true,
+        //createNoButtons: false,
+        css: {
+            buttons: {
+                'background-color': 'transparent'
+            }
+        },
+        callback: {
+            item: {
+                ar: function () {
+                    alert('AR');
+                },
+                vr: function () {
+                    alert('VR');
+                }
+            },
+            trigger: function () {
+                //alert('trigger');
+            }
+        }
+    };
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="roomle-item" data-rml-id="moroso:Byobu_BY0T32" data-rml-type="item">
+                Item A
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="roomle-item" data-rml-id="8a708083560ca6cf01560d7c0c680604" data-rml-type="plan">
+                Plan B
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="roomle-item" data-rml-id="usm:TVLowboard" data-rml-type="configurable-item">
+                Configurable Item
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="roomle-item"
+                 data-rml-id="usm:frame:5E02253410A8C40DCCAA2F48A7682FF8C54B6C1204357299D370DAFC8FFD199C"
+                 data-rml-type="configuration">
+                configuration
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="roomle-item" data-rml-id="8a7080835a17a313015a2239ded04087" data-rml-type="plan">
+                Plan E
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="roomle-item" data-rml-id="vizmotor_0:PAX_Wardrobe:C34C6996AD03E7CD3C2A41C1655683DD52C472A98596CCD2591790EF0A36BD73" data-rml-type="configuration">
+                Conf F
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="assets/js/roomle-button.js" id="rml-button-lib"></script>
+</body>
+</html>
