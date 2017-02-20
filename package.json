@@ -1,0 +1,25 @@
+{
+  "name": "roomle-button",
+  "version": "0.0.11",
+  "description": "The Roomle Button library creates links for furniture which is available in Roomle",
+  "main": "dist/js/roomle-button.min.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roomle/roomle-button.git"
+  },
+  "keywords": [
+    "roomle"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roomle/roomle-button/issues"
+  },
+  "homepage": "https://github.com/Roomle/roomle-button#readme"
+}
