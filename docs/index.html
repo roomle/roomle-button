@@ -15,6 +15,10 @@
         container: '.container',
         selector: '.roomle-item',
         showOnlyTrigger: true,
+        tracking: {
+            enable: true,
+            tenant: 9
+        },
         //createNoButtons: false,
         css: {
             buttons: {
@@ -33,6 +37,9 @@
             trigger: function () {
                 //alert('trigger');
             }
+        },
+        web: {
+            configuratorUrl: 'https://www.design-bestseller.de/usm-konfigurator.html?id=<[ID]>&type=<[TYPE]>'
         }
     };
 </script>
@@ -66,7 +73,9 @@
             </div>
         </div>
         <div class="col-xs-2">
-            <div class="roomle-item" data-rml-id="vizmotor_0:PAX_Wardrobe:C34C6996AD03E7CD3C2A41C1655683DD52C472A98596CCD2591790EF0A36BD73" data-rml-type="configuration">
+            <div class="roomle-item"
+                 data-rml-id="vizmotor_0:PAX_Wardrobe:C34C6996AD03E7CD3C2A41C1655683DD52C472A98596CCD2591790EF0A36BD73"
+                 data-rml-type="configuration">
                 Conf F
             </div>
         </div>

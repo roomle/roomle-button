@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roomle GA snippet</title>
+</head>
+<body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    var gaProperty = 'UA-11302757-1';
+    ga('create', gaProperty, 'auto');
+    ga('require', 'displayfeatures');
+    ga('require', 'ec');
+    ga('send', 'pageview');
+    ga('require', 'linkid');
+    window.RoomleWrapper = {
+        ga: ga,
+        getUid: function () {
+            if (!window.localStorage) {
+                return null;
+            }
+            var session = window.localStorage.getItem('ember_simple_auth:session');
+            try {
+                if (session) {
+                    var parsedSession = JSON.parse(session);
+                    if (parsedSession.authenticated && parsedSession.authenticated.auth) {
+                        return parsedSession.authenticated.auth.userId;
+                    }
+                }
+                return null;
+            } catch (e) {
+                return null;
+            }
+        },
+        gaSetTenant: function (tenant) {
+            ga('set', 'dimension1', tenant);
+        },
+        gaSetUid: function () {
+            var uid = this.getUid();
+            if (!uid) {
+                return;
+            }
+            ga('set', '&uid', uid);
+        }
+    }
+</script>
+</body>
+</html>
