@@ -24,6 +24,7 @@
     ga('require', 'ec');
     ga('send', 'pageview');
     ga('require', 'linkid');
+
     window.RoomleWrapper = {
         ga: ga,
         getUid: function () {
@@ -53,7 +54,27 @@
             }
             ga('set', '&uid', uid);
         }
-    }
+    };
+    var _receiveFromRoomle = function (event) {
+        if (event && event.data) {
+            var data = event.data;
+            if (typeof event.data === 'string') {
+                try {
+                    data = JSON.parse(event.data);
+                } catch (e) {
+                    data = null;
+                }
+            }
+            if (Array.isArray(data) && data.length >= 1 && data[0].indexOf('MessageFromRoomle') !== -1) {
+                var fullCommand = data.shift(); // remove first item of array and return it. Array is edited in place
+                var command = fullCommand.split('.')[1];
+                if (typeof window.RoomleWrapper[command] === 'function') {
+                    window.RoomleWrapper[command].apply(window.RoomleWrapper[command], data);
+                }
+            }
+        }
+    };
+    window.addEventListener('message', _receiveFromRoomle, false);
 </script>
 </body>
 </html>
