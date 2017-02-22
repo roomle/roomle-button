@@ -15,7 +15,7 @@
                 m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
-        m.parentNode.insertBefore(a, m)
+        m.parentNode.insertBefore(a, m);
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     var gaProperty = '<[GA_CODE]>';
@@ -26,7 +26,9 @@
     ga('require', 'linkid');
 
     window.RoomleWrapper = {
-        ga: ga,
+        ga: function () {
+            window.ga.apply(window.ga, arguments);
+        },
         getUid: function () {
             if (!window.localStorage) {
                 return null;

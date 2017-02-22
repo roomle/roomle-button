@@ -202,7 +202,12 @@ The settings are a regular JavaScript object which has to be in the same scope a
 | translations.visualize | object | a hash of translations for the `visualize` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
 | translations.vr | object | a hash of translations for the `virtual reality` feature. The hash has a heading, hint.ios, hint.android, hint.desktop |
 | translations.error | object | a hash of translations for possible errors. The hash has a deeplinkcreate |
+| tracking.enable | boolean | defaults to false if set to true, Roomle tracks all user interactions into Google Analytics. Before turning this flag on, check your privacy policies |
+| tracking.tenant | number | if you use the Roomle Button within a special tenant set this to your tenant number |
+| tracking.gaProvider | Function | if you are already using Google Analytics and want to track interactions into your own Google Analytics account put your `ga` function here. Be aware that you have to use the correct version of the `ga` function |
 | web.baseUrl | string | the baseUrl for the web links |
+| web.configuratorUrl | string | the url where the configurator is hosted. This defaults to Roomle but can be changed if a webshop hosts the configurator on an other url. The placeholder <[ID]> and <[TYPE]> are replaced with the id and the type of the furniture |
+| web.configuratorSameWindow | boolean | when this flag is set to true, the configurator url is opened in the same window. This makes sense for webshops if they want to link to their own configurator |
 | viewr.baseUrl | string | the baseUrl for the viewr links |
 | ios.baseUrl | string | the baseUrl for the iOS links |
 | dataSelector.type | string | this string is used to get the Roomle Type of an element, default: data-rml-type |
