@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
+<style>
+    .exec-deeplink {
+        cursor: pointer;
+    }
+</style>
 <script>
 
     window.RoomleButtonSettings = {
@@ -82,8 +87,31 @@
         </div>
 
     </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <p id="exec-deeplink-ar" class="exec-deeplink">Exec deeplink for AR</p>
+            <p id="exec-deeplink-add" class="exec-deeplink">Exec deeplink for Add (not implemented on iOS right now)</p>
+            <p id="exec-deeplink-configure" class="exec-deeplink">Exec deeplink for configure</p>
+        </div>
+    </div>
 </div>
 
+
 <script src="assets/js/roomle-button.min.js" id="rml-button-lib"></script>
+<script>
+    var execDeeplinkAr = document.getElementById('exec-deeplink-ar');
+    execDeeplinkAr.addEventListener('click', function () {
+        RoomleButtonInstance.execDeeplink('moroso:Byobu_BY0T32', 'item', 'ar', true);
+    });
+    var execDeeplinkAdd = document.getElementById('exec-deeplink-add');
+    execDeeplinkAdd.addEventListener('click', function () {
+        RoomleButtonInstance.execDeeplink('moroso:Byobu_BY0T32', 'item', 'add', true);
+    });
+    var execDeeplinkConfigure = document.getElementById('exec-deeplink-configure');
+    execDeeplinkConfigure.addEventListener('click', function () {
+        RoomleButtonInstance.execDeeplink('moroso:Byobu_BY0T32', 'configurable-item', 'configure', true);
+    });
+</script>
 </body>
 </html>
