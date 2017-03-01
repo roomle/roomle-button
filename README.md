@@ -62,7 +62,7 @@ root  |
       |  js | roomle-button.min.js
             | es6-promise.min.js
 ```
-The `es6-promise.min.js ` polyfill is only included for old legacy browsers which do not support native Promises (for more details see [can i use](http://caniuse.com/#feat=promises)).
+The `es6-promise.min.js ` polyfill is only included for old legacy browsers which do not support native Promises (for more details see [can i use](http://caniuse.com/#feat=promises)). Ether load the Roomle Button script lazily and rely on the loading functionality based on the folder structure described before. If this is not possible you have to provide your own promise polyfill. This can be ether a URL to the polyfill file or the polyfill is directly included in your js build (not recommended by Roomle, because then the polyfill is shipped to every browser even to browsers which don't need the polyfill. This is waste of bandwidth, parse time and performance).
 
 For security reasons a SRI hash is included so you can be sure that the correct script is loaded (this is especially important when lazy loading the scripts). For more details on SRI see the following [MDN page](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
 
@@ -205,6 +205,7 @@ The settings are a regular JavaScript object which has to be in the same scope a
 | tracking.enable | boolean | defaults to false if set to true, Roomle tracks all user interactions into Google Analytics. Before turning this flag on, check your privacy policies |
 | tracking.tenant | number | if you use the Roomle Button within a special tenant set this to your tenant number |
 | tracking.gaProvider | Function | if you are already using Google Analytics and want to track interactions into your own Google Analytics account put your `ga` function here. Be aware that you have to use the correct version of the `ga` function |
+| promisePolyfillUrl | string | Url to your promise polyfill. Only use this if no promise polyfill is included in your build and if you don't rely on the Roomle Button lazy loading logic |
 | web.baseUrl | string | the baseUrl for the web links |
 | web.configuratorUrl | string | the url where the configurator is hosted. This defaults to Roomle but can be changed if a webshop hosts the configurator on an other url. The placeholder <[ID]> and <[TYPE]> are replaced with the id and the type of the furniture |
 | web.configuratorSameWindow | boolean | when this flag is set to true, the configurator url is opened in the same window. This makes sense for webshops if they want to link to their own configurator |

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Demo to Roomle Button</title>
     <link rel="stylesheet" href="style.css">
     <!-- <link rel="stylesheet" href="/css/roomle-button.css"> -->
@@ -93,6 +94,7 @@
             <p id="exec-deeplink-ar" class="exec-deeplink">Exec deeplink for AR</p>
             <p id="exec-deeplink-add" class="exec-deeplink">Exec deeplink for Add (not implemented on iOS right now)</p>
             <p id="exec-deeplink-configure" class="exec-deeplink">Exec deeplink for configure</p>
+            <p id="exec-dispatch-click-trigger" class="exec-deeplink">Dispatch click for trigger</p>
         </div>
     </div>
 </div>
@@ -111,6 +113,10 @@
     var execDeeplinkConfigure = document.getElementById('exec-deeplink-configure');
     execDeeplinkConfigure.addEventListener('click', function () {
         RoomleButtonInstance.execDeeplink('moroso:Byobu_BY0T32', 'configurable-item', 'configure', true);
+    });
+    var execDeeplinkTrigger = document.getElementById('exec-dispatch-click-trigger');
+    execDeeplinkTrigger.addEventListener('click', function (e) {
+        RoomleButtonInstance.dispatchClick(e, 'moroso:Byobu_BY0T32', 'configurable-item', 'trigger', true);
     });
 </script>
 </body>
