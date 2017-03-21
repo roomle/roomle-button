@@ -81,7 +81,7 @@ window.RoomleButtonSettings = {
     }
 }
 ```
-It makes sense to implement the `booted` callback so that you can react on when the Roomle Button Library finished loaded and setup.
+It makes sense to implement the `booted` callback so that you can react on when the RoomleButton-Library finished loaded and setup.
 
 ### Enhance mode
 As explaind in the introduction section above the `enhance mode` adds the Roomle Button to an existing page. A working example can be seen [on our website](https://www.roomle.com/en/furniture-catalog/vizmotor_0:ikea). After you included the Roomle Button JavaScript you need to adjust the HTML markup of your page slightly. Every product which should be enhanced with the Roomle Button has to contain the following two markup attributes:
