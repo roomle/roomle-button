@@ -13,6 +13,10 @@
     .exec-deeplink {
         cursor: pointer;
     }
+
+    .rml-deeplink--row {
+        display: block;
+    }
 </style>
 <script>
 
@@ -97,6 +101,14 @@
             <p id="exec-dispatch-click-trigger" class="exec-deeplink">Dispatch click for trigger</p>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="button-container">
+                Button container
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -118,6 +130,8 @@
     execDeeplinkTrigger.addEventListener('click', function (e) {
         RoomleButtonInstance.dispatchClick(e, 'moroso:Byobu_BY0T32', 'configurable-item', 'trigger', true);
     });
+
+    RoomleButtonInstance.appendButtons(document.querySelector('.button-container'), 'vizmotor_5:Tivoli_2sitzer_2armteilen', 'configurable-item');
 </script>
 </body>
 </html>
