@@ -154,6 +154,7 @@ Is used to execute a roomle button link. This the link which fits best to the us
 * `clickedButton`: for which button should the link be triggered
 * `newWindow`: is a boolean flag, when set to true a new window is opened
 * `callback`: a function which is triggered when the execution of the link is finished
+* `callbackUrl`: The Url which should be used by the app to jump back to your webshop, for the configuration id use the placeholde __CONFID__ in the url
 
 #### getDomLinkFor
 returns a button for the given type. The button is a HTML element with all the needed logic attached to give the best link to the user according to the used device. Also a fallback to store logic is implemented for mobile devices. The following paramters are passed to the function:
