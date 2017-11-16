@@ -242,7 +242,7 @@ The settings are a regular JavaScript object which has to be in the same scope a
 | callback.booted | function | this callback is invoked when the Roomle Button finished loading and setup |
 | callback.clickedHint | function |this callback is invoked when the user clicks on a feature which is not available on her/his current device right now |
 
-### Styleing
+### Styling
 As of now there is no defined interface to style the Roomle Button HTML elements. The pop up etc are injected into your HTML so there is the way to overwrite the Roomle styles via CSS but since this is not supported Roomle can not guarantee that these styleings won't break with the next release. All Roomle CSS styles are prefixed with ```rml-``` to prevent possible naming collissions.
 
 ### Notice
